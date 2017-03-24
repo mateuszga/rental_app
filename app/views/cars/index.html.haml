@@ -1,0 +1,11 @@
+#cars
+	- @cars.each do |car|
+		.car
+			.car_image
+				= link_to (image_tag car.image.url), car
+			.car_info
+				.title
+					%h1= link_to car.name, car			
+				- @bookings.where(car_id: car.id).each do |booking|
+					-if Time.now>=booking.booked_from && Time.now<=booking.booked_to
+						%h2 NOT AVAILABLE

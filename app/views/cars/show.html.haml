@@ -1,0 +1,40 @@
+#cars_show.row
+	.col-md-8.col-md-offset-2
+		.panel.panel-default
+			.panel-heading.car_image
+
+				= image_tag @car.image.url(:medium)
+
+			.panel-body
+
+				%h1= @car.name
+				%p= @car.description
+				%p created by:  
+				%p= @car.user.email
+				= link_to "Delete car", car_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"
+				= link_to "Edit car", edit_car_path, class: "btn btn-default"
+				= link_to "New Booking", new_car_booking_path(@car), class: "btn btn-primary"
+
+			- @bookings.each do |booking|
+				.panel-footer
+					.row
+						.col-md-6
+							.btn-group.pull-right								
+								%h3= booking.customer_name 
+								= booking.comment 
+								Pick Up Date: 
+								%h4= booking.booked_from.strftime("%F")
+								Drop Off Date:
+								%h4= booking.booked_to.strftime("%F")
+								created by:
+								= booking.user.email
+								Price:
+								-case @car.category_id
+								-when 1
+									=(booking.booked_to-booking.booked_from).to_i*100
+								-when 2
+									=(booking.booked_to-booking.booked_from).to_i*75
+								-else
+									=(booking.booked_to-booking.booked_from).to_i*50
+								zł
+								%p= link_to "Delete booking", [booking.car, booking], method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger"

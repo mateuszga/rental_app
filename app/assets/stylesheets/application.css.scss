@@ -1,0 +1,57 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+body {
+	background: #d5d5d5;
+}
+
+#cars {
+	.car {
+		background: #dededf;
+		width: 30%;
+		float: left;
+		margin: 1rem 1%;
+		.car_image {
+			height: 250px;
+			overflow: hidden;
+			img {
+				width: 100%;
+			}
+		}
+		.car_info {
+			text-align: center;
+			h2 {
+				color: #ff0000;
+			}
+			}
+		}
+	}
+
+#cars_show {
+	.panel-heading {
+		padding: 0;
+	}
+	.car_image {
+		img {
+			max-width: 100%;
+			width: 100%;
+			display: block;
+			margin: 0 auto;
+		}
+	}
+	.panel-body {
+		padding: 35px;
+		.description {
+			color: #868686;
+			line-height: 1.00;
+			margin: 0;
+		}
+	}
+	.panel-footer {
+		padding: 5px 5px;
+		h4 {
+			color: #ff0000;
+		}
+	}
+}
+
